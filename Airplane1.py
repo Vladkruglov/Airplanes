@@ -1,6 +1,6 @@
 
 import random
-import turtle
+from tkinter import *
 import time
 
 class Airplane:
@@ -11,98 +11,68 @@ class Airplane:
         self.v = v
         self.b = b
 
-class Fly(Airplane):
-    def __init__(self, company_name, v, b, rer):
-        self.company_name = company_name
-        self.v = v
-        self.b = b
-        self.rer = rer
 
-    def peremeschenie_v_coordinaty():
-        color = ['red', 'orange', 'yellow', 'green', 'cyan', 'blue', 'pink', 'magenta', 'purple', 'brown', 'silver']
-        random_y = random.randint(-250, 250)
-        random_x = random.randint(-250, 250)
+
+def pervyy_polet():
+    color = ['red', 'orange', 'green', 'olive', 'blue', 'pink', 'magenta', 'purple', 'brown', 'silver', 'black']
+    companies = ["S7", "British Airlines", "Delta", "Уральские Авиалинии", "Emirates", "Air Berlin", "Turkish Airlines", "Победа", "Nord Wind", "Аэрофлот"] 
+    a = Tk()
+    a.title("Airplanes                                                                 0.6.4")  
+    c = Canvas(a, height = 700, width = 700)
+    c.pack()
+    c.create_oval(-1000,-1000,1000,1000, fill = 'yellowgreen')
+    c.create_oval(-1000,-1000,720,720, fill = 'gold', outline = 'yellow')
+    c.create_oval(-1000,-1000,590,590,fill = 'cyan',outline = 'cyan')
+    c.create_oval(-1000,-1000,450,450,fill = 'deepskyblue',outline = 'deepskyblue')
+    c.create_oval(-1000,-1000,350,350,fill = 'royalblue',outline = 'royalblue')
+    c.create_oval(-1000,-1000,250,250,fill = 'navy',outline = 'navy')
+
+    for f in range(0,10):
         rancolor = random.choice(color)
-        a = turtle.Pen()
-        b = turtle.Pen()
-        c = turtle.Pen()
-        d = turtle.Pen()
-        e = turtle.Pen()
-        f = turtle.Pen()
-        g = turtle.Pen()
-        h = turtle.Pen()
-        i = turtle.Pen()
-        j = turtle.Pen()
-        companies = ["S7", "British Airlines", "Delta", "Уральские Авиалинии", "Emirates", "Air Berlin", "Turkish Airlines", "Победа", "Nord Wind", "Аэрофлот"] 
-        fly = [a, b, c, d, e, f, g, h, i, j]
-        rer = random.choice(fly)
-        rer.color(rancolor)
-        rer.speed(0)
-        rer.up()
-        rer.goto(random_x, random_y)
-        rer.down()
-        return rer
-        return random_x
-        return random_y
-
-    def pervyy_polet():
+        ran_x = random.randint(0,700)
+        ran_y = random.randint(0,700)
+        ransec_x = random.randint(0,700)
+        ransec_y = random.randint(0,700)
+        c.create_line(ran_x, ran_y, ransec_x, ransec_y, fill = rancolor, width=3, arrow=LAST, dash=(9,1),activefill=rancolor, arrowshape="9 18 9")
         ie = [1, 2, 3, 4]
         spe = [1, 2, 3, 4]
         ransleep = random.choice(ie)
         ranspeed = random.choice(spe)
-        polet_y = random.randint(-250, 250)
-        polet_x = random.randint(-250, 250)
-        rer.speed(ranspeed)
-        rer.goto(polet_x, polet_y)
-        time.sleep(ransleep)
-        return rer
+    time.sleep(ransleep)
+    a.mainloop()
+def vtoroy_polet():
+    second_y = random.randint(-250, 250)
+    second_x = random.randint(-250, 250)
+    ie = [1, 2, 3, 4]
+    spe = [1, 2, 3, 4]
+    ransleep = random.choice(ie)
+    ranspeed = random.choice(spe)
+    rer.speed(ranspeed)
+    rer.goto(second_x, second_y)
+    time.sleep(ransleep)
+    return rer
 
-    def vtoroy_polet():
-        second_y = random.randint(-250, 250)
-        second_x = random.randint(-250, 250)
-        ie = [1, 2, 3, 4]
-        spe = [1, 2, 3, 4]
-        ransleep = random.choice(ie)
-        ranspeed = random.choice(spe)
-        rer.speed(ranspeed)
-        rer.goto(second_x, second_y)
-        time.sleep(ransleep)
-        return rer
-    
-    def tretiy_polet():
-        third_y = random.randint(-250, 250)
-        third_x = random.randint(-250, 250)
-        ie = [1, 2, 3, 4]
-        spe = [1, 2, 3, 4]
-        ransleep = random.choice(ie)
-        ranspeed = random.choice(spe)
-        rer.speed(ranspeed)
-        rer.goto(third_x, third_y)
-        time.sleep(ransleep)
-        return rer
+def tretiy_polet():
+    third_y = random.randint(-250, 250)
+    third_x = random.randint(-250, 250)
+    ie = [1, 2, 3, 4]
+    spe = [1, 2, 3, 4]
+    ransleep = random.choice(ie)
+    ranspeed = random.choice(spe)
+    rer.speed(ranspeed)
+    rer.goto(third_x, third_y)
+    time.sleep(ransleep)
+    return rer
 
-    def vozvraschenie():
-        ie = [1, 2, 3, 4]
-        spe = [1, 2, 3, 4]
-        ransleep = random.choice(ie)
-        ranspeed = random.choice(spe)
-        rer.speed(ranspeed)
-        rer.goto(random_x, random_y)
-        time.sleep(ransleep)
+def vozvraschenie():
+    ie = [1, 2, 3, 4]
+    spe = [1, 2, 3, 4]
+    ransleep = random.choice(ie)
+    ranspeed = random.choice(spe)
+    rer.speed(ranspeed)
+    rer.goto(random_x, random_y)
+    time.sleep(ransleep)
 
-for i in range(0,10):
-    Fly.peremeschenie_v_coordinaty() 
+if __name__ == "__main__":
+    pervyy_polet()
 
-for i in range(0,10):
-    Fly.pervyy_polet()
-
-for i in range(0,10):
-    Fly.vtoroy_polet()
-
-for i in range(0,10):
-    Fly.tretiy_polet()
-
-for i in range(0,10):
-    Fly.vozvraschenie()
-
-time.sleep(10)

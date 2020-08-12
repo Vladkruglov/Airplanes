@@ -1,5 +1,5 @@
 import random
-import turtle
+from tkinter import *
 import time
 
 class Airplane:
@@ -17,57 +17,33 @@ class Fly(Airplane):
         self.b = b
         self.rer = rer
 
-    def vse_tri_poleta():
-        random_y = random.randint(-250, 250)
-        random_x = random.randint(-250, 250)
-        color = ['red', 'orange', 'yellow', 'green', 'cyan', 'blue', 'pink', 'magenta', 'purple', 'brown', 'silver']
-        rancolor = random.choice(color)
-        indcolor = color.index(rancolor)
-        color.pop(indcolor)
-        a = turtle.Pen()
-        b = turtle.Pen()
-        c = turtle.Pen()
-        d = turtle.Pen()
-        e = turtle.Pen()
-        f = turtle.Pen()
-        g = turtle.Pen()
-        h = turtle.Pen()
-        i = turtle.Pen()
-        j = turtle.Pen()
-        companies = ["S7", "British Airlines", "Delta", "Уральские Авиалинии", "Emirates", "Air Berlin", "Turkish Airlines", "Победа", "Nord Wind", "Аэрофлот"] 
-        fly = [a, b, c, d, e, f, g, h, i, j]
-        rer = random.choice(fly)
-        rer.color(rancolor)
-        rer.speed(0)
-        rer.up()
-        rer.goto(random_x, random_y)
-        rer.down()
-        ie = [1, 2, 3, 4]
-        spe = [1, 2, 3, 4]
-        ransleep = random.choice(ie)
-        ranspeed = random.choice(spe)
-        polet_y = random.randint(-250, 250)
-        polet_x = random.randint(-250, 250)
-        rer.speed(ranspeed)
-        rer.goto(polet_x, polet_y)
-        time.sleep(ransleep)
-        second_y = random.randint(-250, 250)
-        second_x = random.randint(-250, 250)
-        ransleep = random.choice(ie)
-        ranspeed = random.choice(spe)
-        rer.speed(ranspeed)
-        rer.goto(second_x, second_y)
-        time.sleep(ransleep)
-        third_y = random.randint(-250, 250)
-        third_x = random.randint(-250, 250)
-        ransleep = random.choice(ie)
-        ranspeed = random.choice(spe)
-        rer.speed(ranspeed)
-        rer.goto(third_x, third_y)
-        time.sleep(ransleep)
-        rer.goto(random_x, random_y)
-        
-for i in range(0,10):
-    Fly.vse_tri_poleta() 
+    def polet():
+        t = Tk()
+        c = Canvas(t,height = 700,width = 700)
+        c.pack()
+        c.create_rectangle(0,0,700,700,fill = 'khaki2')
+        yhy = [1,2,3,4,5]
+        color = ['red', 'orange', 'green', 'olive', 'cyan', 'blue', 'pink', 'magenta', 'purple', 'brown', 'silver', 'black']
+        companies = ["S7", "British Airlines", "Delta", "Уральские Авиалинии", "Emirates", "Air Berlin", "Turkish Airlines","Победа", "Nord Wind", "Аэрофлот"]
+        t.title("Airplanes                                                                 0.4.0")  
+        c.create_oval(200, 299, 143, 267, fill = 'khaki3', outline = 'khaki3')
+        c.create_oval(600, 569, 843, 467, fill = 'khaki3', outline = 'khaki3')
+        c.create_oval(100, 39, 125, 213, fill = 'khaki3', outline = 'khaki3')
+        c.create_oval(567, 65, 653, 23, fill = 'khaki3', outline = 'khaki3')
+        c.create_oval(300, 508, 400, 400, fill = 'khaki3', outline = 'khaki3')
+        c.create_oval(100, 208, 500, 400, fill = 'khaki3', outline = 'khaki3')
+        for i in range(0,10):
+            random_y = random.randint(0,700)
+            random_x = random.randint(0,700)
+            rancolor = random.choice(color)
+            ran_x = random.randint(0,700)
+            ran_y = random.randint(0,700)
+            c.create_line(random_x, random_y, ran_x, ran_y,  fill = rancolor, width=3, arrow=LAST, dash=(9,1), activefill=rancolor, arrowshape="9 18 9")
 
-time.sleep(10)
+
+        
+        
+        t.mainloop()
+if __name__ == "__main__":
+    Fly.polet() 
+
