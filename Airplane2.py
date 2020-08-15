@@ -32,13 +32,20 @@ class Fly(Airplane):
         c.create_oval(567, 65, 653, 23, fill = 'khaki3', outline = 'khaki3')
         c.create_oval(300, 508, 400, 400, fill = 'khaki3', outline = 'khaki3')
         c.create_oval(100, 208, 500, 400, fill = 'khaki3', outline = 'khaki3')
-        for i in range(0,10):
+        airplanes = []
+        for i in range(0,20):
             random_y = random.randint(0,700)
             random_x = random.randint(0,700)
             rancolor = random.choice(color)
+            ranspeed = random.randint(1, 6)
             ran_x = random.randint(0,700)
             ran_y = random.randint(0,700)
-            c.create_line(random_x, random_y, ran_x, ran_y,  fill = rancolor, width=3, arrow=LAST, dash=(9,1), activefill=rancolor, arrowshape="9 18 9")
+            plane = (random_x, random_y, rancolor, ranspeed, ran_x, ran_y)
+            airplanes.append(plane)
+            ran_x = random.randint(0,700)
+            ran_y = random.randint(0,700)
+            # c.create_line(random_x, random_y, ran_x, ran_y,  fill = rancolor, width=3, arrow=LAST, dash=(9,1), activefill=rancolor, arrowshape="9 18 9")
+            c.create_oval(random_x - 5, random_y - 5, random_x + 5, random_y + 5, fill = rancolor, outline = rancolor)
 
 
         

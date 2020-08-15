@@ -52,10 +52,11 @@ def fly():
         ran_y = random.randint(0,700)
         ransec_x = random.randint(0,700)
         ransec_y = random.randint(0,700)
-        can.create_line(ran_x, ran_y, ransec_x, ransec_y, fill = rancolor, width=3, arrow=LAST, dash=(9,1),activefill=rancolor, arrowshape="9 18 9")
-        fjr = (ransec_x, ransec_y)
-        lehf.append(fjr)
-        rd.append(rancolor)
+        ranspeed = random.randint(1, 6)
+        plane = (random_x, random_y, rancolor, ranspeed, ran_x, ran_y)
+        airplanes.append(plane)
+        #can.create_line(ran_x, ran_y, ransec_x, ransec_y, fill = rancolor, width=3, arrow=LAST, dash=(9,1),activefill=rancolor, arrowshape="9 18 9")
+        can.create_oval(random_x - 5, random_y - 5, random_x + 5, random_y + 5, fill = rancolor, outline = rancolor)
 
     timechoice = [2,3,4,5,6]
     tim = random.choice(timechoice)
