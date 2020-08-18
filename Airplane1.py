@@ -40,8 +40,6 @@ def pervyy_polet():
         airplanes.append(plane)
         # c.create_line(ran_x, ran_y, ransec_x, ransec_y, fill = rancolor, width=3, arrow=LAST, dash=(9,1),activefill=rancolor, arrowshape="9 18 9")
         c.create_oval(ran_x - 5, ran_y - 5, ran_x + 5, ran_y + 5, fill = rancolor, outline = rancolor)
-        spe = [1, 2, 3, 4, 5, 6]
-        ranspeed = random.choice(spe)
     a.mainloop()
 
 
