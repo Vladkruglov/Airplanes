@@ -45,18 +45,18 @@ def fly():
     can.create_oval(300, 508, 400, 400, fill = 'white', outline = 'white')
     can.create_oval(100, 208, 500, 400, fill = 'white', outline = 'white')
     lehf = list() 
-    rd = list() 
-    for i in range(0,10):
+    airplanes = list() 
+    for i in range(0,20):
         rancolor = random.choice(colors)
         ran_x = random.randint(0,700)
         ran_y = random.randint(0,700)
         ransec_x = random.randint(0,700)
         ransec_y = random.randint(0,700)
         ranspeed = random.randint(1, 6)
-        plane = (random_x, random_y, rancolor, ranspeed, ran_x, ran_y)
+        plane = (ran_x, ran_y, rancolor, ranspeed, ransec_x, ransec_y)
         airplanes.append(plane)
         #can.create_line(ran_x, ran_y, ransec_x, ransec_y, fill = rancolor, width=3, arrow=LAST, dash=(9,1),activefill=rancolor, arrowshape="9 18 9")
-        can.create_oval(random_x - 5, random_y - 5, random_x + 5, random_y + 5, fill = rancolor, outline = rancolor)
+        can.create_oval(ran_x - 5, ran_y - 5, ran_x + 5, ran_y + 5, fill = rancolor, outline = rancolor)
 
     timechoice = [2,3,4,5,6]
     tim = random.choice(timechoice)
