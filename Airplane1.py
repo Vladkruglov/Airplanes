@@ -31,7 +31,7 @@ class Airplane(object):
         for t in range(0,20):
             airplanes.append(Airplane())
 
-    def draw(c, a):
+    def draw(a, c):
         a.title("Airplanes                                                                 0.6.4")  
         c.pack()
         c.create_oval(-1000,-1000,1000,1000, fill = 'yellowgreen')
@@ -68,7 +68,7 @@ def pervyy_polet():
         c.create_oval(wow - 5, wow + 5, fill = rancolor, outline = rancolor)
     a.mainloop()
 if __name__ == "__main__":
-    Airplane.draw(Canvas(a, height = 700, width = 700), Tk())
+    Airplane.draw(Tk(), Canvas(Tk(), height = 700, width = 700))
 
 
 
