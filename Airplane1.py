@@ -25,11 +25,6 @@ class Airplane(object):
 
     def __str__(self):
         return "Самолёт компании {}, в координатах {}, {}, со скоростью {}, имеет цвет {}.".format(self.company, self.x, self.y, self.speed, self.color)
-    
-    def save():
-        airplanes = []
-        for t in range(0,20):
-            airplanes.append(Airplane())
 
     def draw(a, c):
         a.title("Airplanes                                                                 0.6.4")  
@@ -40,8 +35,9 @@ class Airplane(object):
         c.create_oval(-1000,-1000,450,450,fill = 'deepskyblue',outline = 'deepskyblue')
         c.create_oval(-1000,-1000,350,350,fill = 'royalblue',outline = 'royalblue')
         c.create_oval(-1000,-1000,250,250,fill = 'navy',outline = 'navy')
-        for i in range(0, 20):
-            c.create_oval(x - 5, y - 5, x + 5, y + 5)   
+        c.create_oval(x - 5, y - 5, x + 5, y + 5)   
+
+
 
 
 def pervyy_polet():
@@ -68,7 +64,7 @@ def pervyy_polet():
         c.create_oval(wow - 5, wow + 5, fill = rancolor, outline = rancolor)
     a.mainloop()
 if __name__ == "__main__":
-    Airplane.draw(Tk(), Canvas(Tk(), height = 700, width = 700))
+    draw(Tk(), Canvas(Tk(), height = 700, width = 700))
 
 
 
