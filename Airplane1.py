@@ -26,16 +26,9 @@ class Airplane(object):
     def __str__(self):
         return "Самолёт компании {}, в координатах {}, {}, со скоростью {}, имеет цвет {}.".format(self.company, self.x, self.y, self.speed, self.color)
 
-    def draw(a, c):
-        a.title("Airplanes                                                                 0.6.4")  
-        c.pack()
-        c.create_oval(-1000,-1000,1000,1000, fill = 'yellowgreen')
-        c.create_oval(-1000,-1000,720,720, fill = 'gold', outline = 'yellow')
-        c.create_oval(-1000,-1000,590,590,fill = 'cyan',outline = 'cyan')
-        c.create_oval(-1000,-1000,450,450,fill = 'deepskyblue',outline = 'deepskyblue')
-        c.create_oval(-1000,-1000,350,350,fill = 'royalblue',outline = 'royalblue')
-        c.create_oval(-1000,-1000,250,250,fill = 'navy',outline = 'navy')
-        c.create_oval(x - 5, y - 5, x + 5, y + 5)   
+    def draw(self, c):
+        c.create_oval(self.x - 5, self.y - 5, self.x + 5, self.y + 5, fill = self.color) 
+        c.txt(self.speed)  
 
 
 
@@ -64,7 +57,28 @@ def pervyy_polet():
         c.create_oval(wow - 5, wow + 5, fill = rancolor, outline = rancolor)
     a.mainloop()
 if __name__ == "__main__":
-    draw(Tk(), Canvas(Tk(), height = 700, width = 700))
+    airplanes  = []
+
+    t = Tk()
+    t.title("Airplanes                                                                 0.6.4")  
+    canvas = Canvas(t, height = 700, width = 700)
+    canvas.pack()
+    canvas.create_oval(-1000,-1000,1000,1000, fill = 'yellowgreen')
+    canvas.create_line(70, 0, 70, 700)
+    canvas.create_line(140, 0, 140, 700)
+    canvas.create_line(210, 0, 210, 700)
+    canvas.create_line(280, 0, 280, 700)
+    canvas.create_line(350, 0, 350, 700)
+    canvas.create_line(420, 0, 420, 700)
+    canvas.create_line(490, 0, 490, 700)
+    canvas.create_line(560, 0, 560, 700)
+    canvas.create_line(630, 0, 630, 700)
+    for i in range(0, 20):
+        airplane = Airplane()
+        airplanes.append(airplane)
+    
+    for plane in airplanes:
+        plane.draw(canvas)
 
 
 
