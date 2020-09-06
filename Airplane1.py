@@ -60,15 +60,6 @@ if __name__ == "__main__":
         r = r + 1
         canvas.create_line(0, z, 700, z)
         z = z + 70
-    canvas.create_line(0, 70, 700, 70)
-    canvas.create_line(0, 140, 700, 140)
-    canvas.create_line(0, 210, 700, 210)
-    canvas.create_line(0, 280, 700, 280)
-    canvas.create_line(0, 350, 700, 350)
-    canvas.create_line(0, 420, 700, 420)
-    canvas.create_line(0, 490, 700, 490)
-    canvas.create_line(0, 560, 700, 560)
-    canvas.create_line(0, 630, 700, 630)
 
     for i in range(0, 20):
         airplane = Airplane()
