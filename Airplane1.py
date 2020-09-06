@@ -1,7 +1,8 @@
 
 import random
 from tkinter import *
-import time
+import time 
+import math
 
 color = ['red', 'orange', 'green', 'olive', 'blue', 'pink', 'magenta', 'purple', 'brown', 'silver', 'black']
 companies = ["S7", "British Airlines", "Delta", "Уральские Авиалинии", "Emirates", "Air Berlin", "Turkish Airlines", "Победа", "Nord Wind", "Аэрофлот"]
@@ -9,28 +10,36 @@ companies = ["S7", "British Airlines", "Delta", "Уральские Авиали
 class Airplane(object):
 
     
-    def __init__(self, x, y, company, speed, color, bearing):
+    def __init__(self, x, y, company, speed, color, bearing, kmeters, x_fly, y_fly):
         self.company = company
         self.x = x
         self.y = y
         self.speed = speed
         self.color = color
         self.bearing = bearing
+        self.kmeters = kmeters
+        self.x_fly = x_fly
+        self.y_fly = y_fly
 
-    def __init__(self, max_height = 700, max_width = 700, max_speed = 1000, max_bearing = 360):
+    def __init__(self, max_height = 700, max_width = 700, max_speed = 1000, max_bearing = 360, max_kmeters = 400, min_kmeters = 50):
         self.x = random.randint(0, max_height)
         self.y = random.randint(0, max_width)
         self.speed = random.randint(0, max_speed)
         self.color = random.choice(color)
         self.company = random.choice(companies)
         self.bearing = random.randint(0, max_bearing)
+        self.kmeters = random.randint(min_kmeters, max_kmeters)
+        self.x_fly = self.kmeters * math.cos(self.bearing) + self.x
+        self.y_fly = self.kmeters * math.sin(self.bearing) + self.y
 
     def __str__(self):
         return "Самолёт компании {}, в координатах {}, {}, со скоростью {}, имеет цвет {}.".format(self.company, self.x, self.y, self.speed, self.color)
 
     def draw(self, c):
         c.create_oval(self.x - 5, self.y - 5, self.x + 5, self.y + 5, fill = self.color) 
+        c.create_line(self.x, self.y, self.x_fly, self.y_fly, fill = self.color, width=3, arrow=LAST, dash=(9,1),activefill=self.color, arrowshape="9 18 9")
 
+# xполёта  = кос(угол) * длина + x
 
 
 
@@ -54,7 +63,7 @@ def pervyy_polet():
 
     for f in range(0,20):
         wow = random.choice(jokelist)
-        # c.create_line(ran_x, ran_y, ransec_x, ransec_y, fill = rancolor, width=3, arrow=LAST, dash=(9,1),activefill=rancolor, arrowshape="9 18 9")
+        # c.create_line(ran_x, ran_y, ransec_x, ransec_y, fill = color, width=3, arrow=LAST, dash=(9,1),activefill=rancolor, arrowshape="9 18 9")
         c.create_oval(wow - 5, wow + 5, fill = rancolor, outline = rancolor)
     a.mainloop()
 if __name__ == "__main__":
