@@ -39,7 +39,7 @@ class Airplane(object):
         c.create_oval(self.x - 5, self.y - 5, self.x + 5, self.y + 5, fill = self.color) 
         c.create_line(self.x, self.y, self.x_fly, self.y_fly, fill = self.color, width=3, arrow=LAST, dash=(9,1),activefill=self.color, arrowshape="9 18 9")
 
-# xполёта  = кос(угол) * длина + x
+
 
 
 
