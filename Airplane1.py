@@ -33,39 +33,13 @@ class Airplane(object):
         self.y_fly = self.kmeters * math.sin(self.bearing) + self.y
 
     def __str__(self):
-        return "Самолёт компании {}, в координатах {}, {}, со скоростью {}, имеет цвет {}.".format(self.company, self.x, self.y, self.speed, self.color)
+        return "Самолёт компании {}, в координатах {}, {}, летит в {} со скоростью {}, имеет цвет {}.".format(self.company, self.x, self.y, self.speed, self.color)
 
     def draw(self, c):
         c.create_oval(self.x - 5, self.y - 5, self.x + 5, self.y + 5, fill = self.color) 
         c.create_line(self.x, self.y, self.x_fly, self.y_fly, fill = self.color, width=3, arrow=LAST, dash=(9,1),activefill=self.color, arrowshape="9 18 9")
 
 
-
-
-
-def pervyy_polet():
-    
-    
-    jokelist = []
-    for f in range(0,20):
-        
-        ran_x = random.randint(0,700)
-        ran_y = random.randint(0,700)
-        spe = [1, 2, 3, 4, 5, 6]
-        ranspeed = random.choice(spe)
-        ransec_x = random.randint(0,700)
-        ransec_y = random.randint(0,700)
-        plane = (ran_x, ran_y, rancolor, ranspeed, ransec_x, ransec_y)
-        
-    for f in range(0,20):
-        joke = (ran_x, ran_y)
-        jokelist.append(joke)
-
-    for f in range(0,20):
-        wow = random.choice(jokelist)
-        # c.create_line(ran_x, ran_y, ransec_x, ransec_y, fill = color, width=3, arrow=LAST, dash=(9,1),activefill=rancolor, arrowshape="9 18 9")
-        c.create_oval(wow - 5, wow + 5, fill = rancolor, outline = rancolor)
-    a.mainloop()
 if __name__ == "__main__":
     airplanes  = []
 
