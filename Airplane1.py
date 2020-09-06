@@ -33,7 +33,7 @@ class Airplane(object):
         self.y_fly = self.kmeters * math.sin(self.bearing) + self.y
 
     def __str__(self):
-        return "Самолёт компании {}, в координатах {}, {}, летит в {} со скоростью {}, имеет цвет {}.".format(self.company, self.x, self.y, self.speed, self.color)
+        return "Самолёт компании {}, в координатах {}, {}, летит в {}, {}, со скоростью {}, имеет цвет {}.".format(self.company, self.x, self.y, self.x_fly, self.y_fly, self.speed, self.color)
 
     def draw(self, c):
         c.create_oval(self.x - 5, self.y - 5, self.x + 5, self.y + 5, fill = self.color) 
@@ -76,6 +76,8 @@ if __name__ == "__main__":
     
     for airplane in airplanes:
         airplane.draw(canvas)
+
+    
     t.mainloop()
 
 
