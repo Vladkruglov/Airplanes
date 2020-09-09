@@ -1,4 +1,4 @@
-
+""" Эта программа создаёт класс самолёта, кладёт самолёты в список, и потом по списку рисует полёт самолётов """
 import random
 from tkinter import *
 import time 
@@ -11,6 +11,7 @@ class Airplane(object):
 
     
     def __init__(self, x, y, company, speed, color, bearing, kmeters, x_fly, y_fly):
+        # функция которая  имеет все переменные
         self.company = company
         self.x = x
         self.y = y
@@ -22,6 +23,7 @@ class Airplane(object):
         self.y_fly = y_fly
 
     def __init__(self, max_height = 700, max_width = 700, max_speed = 1000, max_bearing = 360, max_kmeters = 400, min_kmeters = 50):
+        # функция выдаёт значение переменных
         self.x = random.randint(0, max_height)
         self.y = random.randint(0, max_width)
         self.speed = random.randint(0, max_speed)
@@ -33,35 +35,28 @@ class Airplane(object):
         self.y_fly = self.kmeters * math.sin(self.bearing) + self.y
 
     def __str__(self):
+        # берёт специальную строку
         return "Самолёт компании {}, в координатах {}, {}, летит в {}, {}, со скоростью {}, имеет цвет {}.".format(self.company, self.x, self.y, self.x_fly, self.y_fly, self.speed, self.color)
 
-    def draw(self, c, a, b):
+    def draw(self, c):
         c.create_oval(self.x - 5, self.y - 5, self.x + 5, self.y + 5, fill = self.color) 
         c.create_line(self.x, self.y, self.x_fly, self.y_fly, fill = self.color, width=3, arrow=LAST, dash=(9,1),activefill=self.color, arrowshape="9 18 9")
-        if self.x > 700:
-            a.remove(b)
-        elif self.y > 700:
-            a.remove(b)
-        elif self.x_fly > 700:
-            a.remove(b)
-        elif self.y_fly > 700:
-            a.remove(b)
-        elif self.x > 0:
-            a.remove(b)
-        elif self.y > 0:
-            a.remove(b)
-        elif self.x_fly > 0:
-            a.remove(b)
-        elif self.y_fly > 0:
-            a.remove(b)
+    
+    def calc(self):
+        self.x_fly = self.kmeters * math.cos(self.bearing) + self.x
+        self.y_fly = self.kmeters * math.sin(self.bearing) + self.y
 
+    def move(self):
+        self.x = self.x_fly
+        self.y = self.y_fly
+        
 
 
 if __name__ == "__main__":
     airplanes  = []
 
     t = Tk()
-    t.title("Airplanes                                                                 0.6.4")  
+    t.title("Airplanes                                                                 0.10.5")  
     canvas = Canvas(t,height = 700,width = 700)
     canvas.pack()
     canvas.create_oval(-1000,-1000,1000,1000, fill = 'yellowgreen')
@@ -81,12 +76,17 @@ if __name__ == "__main__":
     for i in range(0, 20):
         airplane = Airplane()
         airplanes.append(airplane)
-        b = airplanes.index(airplane)
+
+    b = airplanes.index(airplane)
 
 
-    
-    for airplane in airplanes:
-        airplane.draw(canvas, airplanes, b)
+    while len(airplanes) > 0: 
+        for airplane in airplanes:
+            airplane.draw(canvas)
+            airplane.move()
+            airplane.calc()
+            if airplane.x > 700 or airplane.x < 0 or airplane.y > 700 or airplane.y < 0:
+                airplanes.remove(airplane)
 
     
     t.mainloop()
