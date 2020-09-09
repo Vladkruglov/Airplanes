@@ -35,9 +35,26 @@ class Airplane(object):
     def __str__(self):
         return "Самолёт компании {}, в координатах {}, {}, летит в {}, {}, со скоростью {}, имеет цвет {}.".format(self.company, self.x, self.y, self.x_fly, self.y_fly, self.speed, self.color)
 
-    def draw(self, c):
+    def draw(self, c, a, b):
         c.create_oval(self.x - 5, self.y - 5, self.x + 5, self.y + 5, fill = self.color) 
         c.create_line(self.x, self.y, self.x_fly, self.y_fly, fill = self.color, width=3, arrow=LAST, dash=(9,1),activefill=self.color, arrowshape="9 18 9")
+        if self.x > 700:
+            a.remove(b)
+        elif self.y > 700:
+            a.remove(b)
+        elif self.x_fly > 700:
+            a.remove(b)
+        elif self.y_fly > 700:
+            a.remove(b)
+        elif self.x > 0:
+            a.remove(b)
+        elif self.y > 0:
+            a.remove(b)
+        elif self.x_fly > 0:
+            a.remove(b)
+        elif self.y_fly > 0:
+            a.remove(b)
+
 
 
 if __name__ == "__main__":
@@ -64,9 +81,12 @@ if __name__ == "__main__":
     for i in range(0, 20):
         airplane = Airplane()
         airplanes.append(airplane)
+        b = airplanes.index(airplane)
+
+
     
     for airplane in airplanes:
-        airplane.draw(canvas)
+        airplane.draw(canvas, airplanes, b)
 
     
     t.mainloop()
