@@ -45,12 +45,13 @@ class Airplane(object):
     def calc(self):
         self.x_fly = self.kmeters * math.cos(self.bearing) + self.x
         self.y_fly = self.kmeters * math.sin(self.bearing) + self.y
-
+        self.speed = self.speed + random.randint(0, 40) or - random.randint(0, 40)
+        self.bearing = self.bearing + random.randint(0, 15) or self.bearing - random.randint(0, 15)
+        self.kmeters = random.randint(self.kmeters, self.kmeters + 40) or random.randint(self.kmeters, self.kmeters - 40)
     def move(self):
         self.x = self.x_fly
         self.y = self.y_fly
         
-
 
 if __name__ == "__main__":
     airplanes  = []
