@@ -18,21 +18,19 @@ class Airplane(object):
         self.speed = speed
         self.color = color
         self.bearing = bearing
-        self.kmeters = kmeters
         self.x_fly = x_fly
         self.y_fly = y_fly
 
-    def __init__(self, max_height = 700, max_width = 700, max_speed = 1000, max_bearing = 360, max_kmeters = 400, min_kmeters = 50):
+    def __init__(self, max_height = 700, max_width = 700, max_speed = 350, max_bearing = 360, max_kmeters = 400, min_kmeters = 50):
         # функция выдаёт значение переменных
         self.x = random.randint(0, max_height)
         self.y = random.randint(0, max_width)
-        self.speed = random.randint(0, max_speed)
+        self.speed = random.randint(50, max_speed)
         self.color = random.choice(color)
         self.company = random.choice(companies)
         self.bearing = random.randint(0, max_bearing)
-        self.kmeters = random.randint(min_kmeters, max_kmeters)
-        self.x_fly = self.kmeters * math.cos(self.bearing) + self.x
-        self.y_fly = self.kmeters * math.sin(self.bearing) + self.y
+        self.x_fly = self.speed * math.cos(self.bearing) + self.x
+        self.y_fly = self.speed * math.sin(self.bearing) + self.y
 
     def __str__(self):
         # берёт специальную строку
@@ -41,14 +39,23 @@ class Airplane(object):
     def draw(self, c):
         c.create_oval(self.x - 5, self.y - 5, self.x + 5, self.y + 5, fill = self.color) 
         c.create_line(self.x, self.y, self.x_fly, self.y_fly, fill = self.color, width=3, arrow=LAST, dash=(9,1),activefill=self.color, arrowshape="9 18 9")
+        
+    def change(self):
+        """ Функция изменяет скорость и направление 
+        Направление может иметь значение от 0 до 360
+        Скорость может быть от 50 до 350"""
+        self.bearing = self.bearing + random.randint(-15, 15)
+        if self.bearing > 360:
+            self.bearing = self.bearing - 360
+        elif self.bearing < 0:
+            self.bearing = self.bearing + 360
+        self.speed = self.speed + random.randint(-40, 40) 
+        print(self.bearing)
     
     def calc(self):
-        self.x_fly = self.kmeters * math.cos(self.bearing) + self.x
-        self.y_fly = self.kmeters * math.sin(self.bearing) + self.y
-        self.speed = self.speed + random.randint(0, 40) or - random.randint(0, 40)
-        self.bearing = self.bearing + random.randint(0, 15) or self.bearing - random.randint(0, 15)
-        self.kmeters = random.randint(self.kmeters, self.kmeters + 40) or random.randint(self.kmeters, self.kmeters - 40)\
-            
+        self.x_fly = self.speed * math.cos(self.bearing) + self.x
+        self.y_fly = self.speed * math.sin(self.bearing) + self.y
+
     def move(self):
         self.x = self.x_fly
         self.y = self.y_fly
@@ -75,7 +82,7 @@ if __name__ == "__main__":
         canvas.create_line(0, z, 700, z)
         z = z + 70
 
-    for i in range(0, 20):
+    for i in range(0, 1):
         airplane = Airplane()
         airplanes.append(airplane)
 
@@ -87,6 +94,7 @@ if __name__ == "__main__":
             airplane.draw(canvas)
             airplane.move()
             airplane.calc()
+            airplane.change()
             if airplane.x > 700 or airplane.x < 0 or airplane.y > 700 or airplane.y < 0:
                 airplanes.remove(airplane)
 
