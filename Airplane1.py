@@ -10,7 +10,7 @@ companies = ["S7", "British Airlines", "Delta", "Уральские Авиали
 class Airplane(object):
 
     
-    def __init__(self, x, y, company, speed, color, bearing, kmeters, x_fly, y_fly):
+    def __init__(self, x, y, company, speed, color, bearing, x_fly, y_fly):
         # функция которая  имеет все переменные
         self.company = company
         self.x = x
@@ -21,7 +21,7 @@ class Airplane(object):
         self.x_fly = x_fly
         self.y_fly = y_fly
 
-    def __init__(self, max_height = 700, max_width = 700, max_speed = 350, max_bearing = 360, max_kmeters = 400, min_kmeters = 50):
+    def __init__(self, max_height = 700, max_width = 700, max_speed = 350, max_bearing = 360, min_kmeters = 50):
         # функция выдаёт значение переменных
         self.x = random.randint(0, max_height)
         self.y = random.randint(0, max_width)
@@ -29,8 +29,7 @@ class Airplane(object):
         self.color = random.choice(color)
         self.company = random.choice(companies)
         self.bearing = random.randint(0, max_bearing)
-        self.x_fly = self.speed * math.cos(self.bearing) + self.x
-        self.y_fly = self.speed * math.sin(self.bearing) + self.y
+        self.calc()
 
     def __str__(self):
         # берёт специальную строку
@@ -44,7 +43,7 @@ class Airplane(object):
         """ Функция изменяет скорость и направление 
         Направление может иметь значение от 0 до 360
         Скорость может быть от 50 до 350"""
-        self.bearing = random.randint(-15, 15) - 90
+        self.bearing = random.randint(-15, 15)
         self.speed = self.speed + random.randint(-40, 40) 
         if self.bearing > 360:
             self.bearing = self.bearing - 360 
@@ -56,12 +55,10 @@ class Airplane(object):
         elif self.speed < 50:
             a = 50 - self.speed 
             self.speed = self.speed + a
-
-        print(self.bearing)
     
     def calc(self):
-        self.x_fly = self.speed * math.cos(self.bearing) + self.x
-        self.y_fly = self.speed * math.sin(self.bearing) + self.y
+        self.x_fly = self.speed * math.cos(math.radians(self.bearing)) + self.x
+        self.y_fly = self.speed * math.sin(math.radians(self.bearing)) + self.y
 
     def move(self):
         self.x = self.x_fly
@@ -89,7 +86,7 @@ if __name__ == "__main__":
         canvas.create_line(0, z, 700, z)
         z = z + 70
 
-    for i in range(0, 1):
+    for i in range(0, 20):
         airplane = Airplane()
         airplanes.append(airplane)
 
@@ -98,10 +95,10 @@ if __name__ == "__main__":
 
     while len(airplanes) > 0: 
         for airplane in airplanes:
+            airplane.change()
             airplane.draw(canvas)
             airplane.move()
             airplane.calc()
-            airplane.change()
             if airplane.x > 700 or airplane.x < 0 or airplane.y > 700 or airplane.y < 0:
                 airplanes.remove(airplane)
 
