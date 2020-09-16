@@ -90,8 +90,6 @@ if __name__ == "__main__":
         airplane = Airplane()
         airplanes.append(airplane)
 
-    b = airplanes.index(airplane)
-
 
     while len(airplanes) > 0: 
         for airplane in airplanes:
