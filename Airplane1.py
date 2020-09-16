@@ -44,12 +44,19 @@ class Airplane(object):
         """ Функция изменяет скорость и направление 
         Направление может иметь значение от 0 до 360
         Скорость может быть от 50 до 350"""
-        self.bearing = self.bearing + random.randint(-15, 15)
+        self.bearing = random.randint(-15, 15) - 90
+        self.speed = self.speed + random.randint(-40, 40) 
         if self.bearing > 360:
-            self.bearing = self.bearing - 360
+            self.bearing = self.bearing - 360 
         elif self.bearing < 0:
             self.bearing = self.bearing + 360
-        self.speed = self.speed + random.randint(-40, 40) 
+        if self.speed > 350:
+            a = self.speed - 350
+            self.speed = 350 - a
+        elif self.speed < 50:
+            a = 50 - self.speed 
+            self.speed = self.speed + a
+
         print(self.bearing)
     
     def calc(self):
