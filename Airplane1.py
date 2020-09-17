@@ -43,7 +43,7 @@ class Airplane(object):
         """ Функция изменяет скорость и направление 
         Направление может иметь значение от 0 до 360
         Скорость может быть от 50 до 350"""
-        self.bearing = random.randint(-15, 15)
+        self.bearing = self.bearing + random.randint(-15, 15)
         self.speed = self.speed + random.randint(-40, 40) 
         if self.bearing > 360:
             self.bearing = self.bearing - 360 
@@ -63,6 +63,11 @@ class Airplane(object):
     def move(self):
         self.x = self.x_fly
         self.y = self.y_fly
+
+
+
+
+
         
 
 if __name__ == "__main__":
@@ -99,6 +104,8 @@ if __name__ == "__main__":
             airplane.calc()
             if airplane.x > 700 or airplane.x < 0 or airplane.y > 700 or airplane.y < 0:
                 airplanes.remove(airplane)
+    import doctest
+    doctest.testmod()
 
     
     t.mainloop()
