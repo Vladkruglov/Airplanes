@@ -55,6 +55,7 @@ class Airplane(object):
         elif self.speed < 50:
             a = 50 - self.speed 
             self.speed = self.speed + a
+
     
     def calc(self):
         self.x_fly = self.speed * math.cos(math.radians(self.bearing)) + self.x
@@ -65,6 +66,10 @@ class Airplane(object):
         self.y = self.y_fly
 
 
+def test():
+    """
+    """
+    pass
 
 
 
@@ -74,7 +79,7 @@ if __name__ == "__main__":
     airplanes  = []
 
     t = Tk()
-    t.title("Airplanes                                                                 0.10.5")  
+    t.title("Airplanes                                                                 0.10.9")  
     canvas = Canvas(t,height = 700,width = 700)
     canvas.pack()
     canvas.create_oval(-1000,-1000,1000,1000, fill = 'yellowgreen')
@@ -98,6 +103,7 @@ if __name__ == "__main__":
 
     while len(airplanes) > 0: 
         for airplane in airplanes:
+            test()
             airplane.change()
             airplane.draw(canvas)
             airplane.move()
