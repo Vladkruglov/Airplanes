@@ -69,7 +69,7 @@ class Airplane(object):
 def test(x, y, speed, bearing):
     """
     >>> test(10,10,10,90)
-    10, 20
+    (10, 20)
     """
     x_fly = speed * math.cos(math.radians(bearing)) + x
     y_fly = speed * math.sin(math.radians(bearing)) + y
