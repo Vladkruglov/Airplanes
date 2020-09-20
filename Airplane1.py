@@ -51,7 +51,7 @@ class Airplane(object):
             self.bearing = self.bearing + 360
         if self.speed > 350:
             a = self.speed - 350
-            self.speed = 350 - a
+            self.speed = self.speed - a
         elif self.speed < 50:
             a = 50 - self.speed 
             self.speed = self.speed + a
