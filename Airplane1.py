@@ -66,10 +66,15 @@ class Airplane(object):
         self.y = self.y_fly
 
 
-def test():
+def test(x, y, speed, bearing):
     """
+    >>> test(10,10,10,90)
+    10, 20
     """
-    pass
+    x_fly = speed * math.cos(math.radians(bearing)) + x
+    y_fly = speed * math.sin(math.radians(bearing)) + y
+    return x_fly, y_fly
+    
 
 
 
@@ -103,7 +108,7 @@ if __name__ == "__main__":
 
     while len(airplanes) > 0: 
         for airplane in airplanes:
-            test()
+            test(10,10,10,90)
             airplane.change()
             airplane.draw(canvas)
             airplane.move()
