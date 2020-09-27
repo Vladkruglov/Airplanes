@@ -91,15 +91,15 @@ def test():
         canvas.create_line(0, p, 700, p)
         p = p + 70
     irplanes  = []
-    for i in range(0, 20):
+    for i in range(0, 1):
         a = Airplane(350,350,"S7",100,"red",180,700,0)
         irplanes.append(a)
     while len(irplanes) > 0: 
         for a in irplanes:
+            a.calc()
             a.change()
             a.draw(canvas)
             a.move()
-            a.calc()
             if a.x > 700 or a.x < 0 or a.y > 700 or a.y < 0:
                 irplanes.remove(a)
    
