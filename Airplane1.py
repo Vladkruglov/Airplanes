@@ -70,7 +70,7 @@ class Airplane(object):
 def test():
     """
     >>> test()
-
+    
     
     """
     t = Tk()
@@ -92,7 +92,7 @@ def test():
         p = p + 70
     irplanes  = []
     for i in range(0, 1):
-        a = Airplane(350,350,"S7",100,"red",180,700,0)
+        a = Airplane(350,350,"S7",700,"red",180,700,0)
         irplanes.append(a)
     while len(irplanes) > 0: 
         for a in irplanes:
