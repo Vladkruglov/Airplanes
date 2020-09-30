@@ -18,7 +18,7 @@ class Airplane(object):
         self.company = random.choice(companies)
         self.bearing = random.randint(0, 360)
         self.calc()
-    
+
     def __init__(self, x, y, company, speed, color, bearing, x_fly, y_fly):
         # функция которая  имеет все переменные
         self.company = company
@@ -29,6 +29,10 @@ class Airplane(object):
         self.bearing = bearing
         self.x_fly = x_fly
         self.y_fly = y_fly
+
+    
+    
+
 
 
 
@@ -66,43 +70,28 @@ class Airplane(object):
         self.x = self.x_fly
         self.y = self.y_fly
 
+a = Airplane(10, 10, "Delta", 100, 'silver', 90, 0, 0)
+a.calc()
 
-def test():
-    """
-    >>> test()
-    
-    
-    """
+"""
+>>> test(a)
+(110, 10)
+
+"""
+
+def test(a):
     t = Tk()
-    t.title("Airplanes.Test()")  
-    canvas = Canvas(t,height = 700,width = 700)
-    canvas.pack()
-    canvas.create_oval(-1000,-1000,1000,1000, fill = 'yellowgreen')
-    o = 0
-    p = 70
-    while o < 10:
-        o = o + 1
-        canvas.create_line(p, 0, p, 700)
-        p = p + 70
-    o = 0
-    p = 70
-    while o < 10:
-        o = o + 1
-        canvas.create_line(0, p, 700, p)
-        p = p + 70
-    irplanes  = []
-    for i in range(0, 1):
-        a = Airplane(350,350,"S7",700,"red",180,700,0)
-        irplanes.append(a)
-    while len(irplanes) > 0: 
-        for a in irplanes:
-            a.calc()
-            a.change()
-            a.draw(canvas)
-            a.move()
-            if a.x > 700 or a.x < 0 or a.y > 700 or a.y < 0:
-                irplanes.remove(a)
-   
+    c = Canvas(t, width = 700, height = 700)
+    a.calc()
+    a.draw(c)
+    return a.x_fly, a.y_fly
+    a.change()
+    a.move()
+    t.mainloop()
+    
+
+        
+
     
 
 
@@ -112,23 +101,23 @@ def test():
 if __name__ == "__main__":
     airplanes  = []
 
-    t = Tk()
-    t.title("Airplanes                                                                 0.10.9")  
-    canvas = Canvas(t,height = 700,width = 700)
-    canvas.pack()
-    canvas.create_oval(-1000,-1000,1000,1000, fill = 'yellowgreen')
-    r = 0
-    z = 70
-    while r < 10:
-        r = r + 1
-        canvas.create_line(z, 0, z, 700)
-        z = z + 70
-    r = 0
-    z = 70
-    while r < 10:
-        r = r + 1
-        canvas.create_line(0, z, 700, z)
-        z = z + 70
+    # t = Tk()
+    # t.title("Airplanes                                                                 0.10.9")  
+    # canvas = Canvas(t,height = 700,width = 700)
+    # canvas.pack()
+    # canvas.create_oval(-1000,-1000,1000,1000, fill = 'yellowgreen')
+    # r = 0
+    # z = 70
+    # while r < 10:
+    #     r = r + 1
+    #     canvas.create_line(z, 0, z, 700)
+    #     z = z + 70
+    # r = 0
+    # z = 70
+    # while r < 10:
+    #     r = r + 1
+    #     canvas.create_line(0, z, 700, z)
+    #     z = z + 70
     
     # for i in range(0, 20):
     #     airplane = Airplane()
@@ -145,11 +134,11 @@ if __name__ == "__main__":
     #         airplane.calc()
     #         if airplane.x > 700 or airplane.x < 0 or airplane.y > 700 or airplane.y < 0:
     #             airplanes.remove(airplane)
+    
+
     import doctest
     doctest.testmod()
 
-    
-    t.mainloop()
 
 
 
