@@ -70,16 +70,17 @@ class Airplane(object):
         self.x = self.x_fly
         self.y = self.y_fly
 
-a = Airplane(10, 10, "Delta", 100, 'silver', 90, 0, 0)
-a.calc()
+
 
 """
+a = Airplane(10, 10, "Delta", 100, 'silver', 90, 0, 0)
+a.calc()
 >>> test(a)
 (110, 10)
-
 """
 
 def test(a):
+
     t = Tk()
     c = Canvas(t, width = 700, height = 700)
     a.calc()
