@@ -1,4 +1,11 @@
-""" Эта программа создаёт класс самолёта, кладёт самолёты в список, и потом по списку рисует полёт самолётов """
+""" Эта программа создаёт класс самолёта, кладёт самолёты в список, и потом по списку рисует полёт самолётов 
+
+>>> a = Airplane(10.0, 10.0, "Delta", 100.0, 'silver', 90, 0, 0)
+>>> a.calc()
+>>> test(a)
+(10.0, 110.0)
+"""
+
 import random
 from tkinter import *
 import time 
@@ -65,6 +72,9 @@ class Airplane(object):
     def calc(self):
         self.x_fly = self.speed * math.cos(math.radians(self.bearing)) + self.x
         self.y_fly = self.speed * math.sin(math.radians(self.bearing)) + self.y
+        self.x_fly = round(self.x_fly * 100) / 100
+        self.y_fly = round(self.y_fly * 100) / 100
+        
 
     def move(self):
         self.x = self.x_fly
@@ -72,15 +82,8 @@ class Airplane(object):
 
 
 
-"""
-a = Airplane(10, 10, "Delta", 100, 'silver', 90, 0, 0)
-a.calc()
->>> test(a)
-(110, 10)
-"""
 
 def test(a):
-
     t = Tk()
     c = Canvas(t, width = 700, height = 700)
     a.calc()
